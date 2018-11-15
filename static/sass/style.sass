@@ -1,2 +1,90 @@
-body
-    background-color: lightblue
+@import reset
+
+.main
+    max-width: 1000px
+    margin: 0 auto
+    padding-top: 100px
+
+.sidebar
+    padding-left: 50px
+
+    .big-button
+        background-color: lightblue
+        border-radius: 10px
+        width: 100%
+        padding: 25px 25px
+        margin-bottom: 30px
+        transition: all .2s ease
+
+        &.apply
+            background-color: #fe8278
+        
+        &.info
+            background-color: #00c3af
+        
+        &.status
+            background-color: #4096ed
+        
+        &.admin
+            background-color: #555
+
+        &:hover
+            cursor: pointer
+            transform: scale(1.05)
+
+        h3
+            font-weight: 500
+            font-size: 20px
+            margin-top: 0
+            margin-bottom: 8px
+            color: white
+        
+        p
+            font-size: 14px
+            color: white
+            opacity: 85%
+
+
+.main-wrapper, .sidebar
+    vertical-align: top
+    max-width: 510px
+    display: inline-block
+
+    .left-col, .right-col
+        max-width: 250px
+        margin-right: 60px
+        display: inline-block
+        vertical-align: top
+    
+    .list-header
+        font-weight: 900
+        text-transform: uppercase
+        color: #633394
+        margin-bottom: 15px
+        font-size: 14px
+    
+    ul
+        margin-bottom: 40px
+    
+    li
+        margin-bottom: 10px
+
+        a
+            color: #333
+            text-decoration: none
+
+            &:hover
+                text-decoration: underline
+                color: #633394
+    
+h1
+    font-weight: 700
+    font-size: 36px
+    color: #633394
+    margin-top: 50px
+
+.subtext
+    font-size: 18px
+    margin-top: 25px
+    line-height: 26px
+    max-width: 600px

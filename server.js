@@ -6,7 +6,10 @@ const index = require('./controllers/index');
 
 // init app
 const app = express();
+
+//set some helpers
 app.use(bodyParser.json());
+app.set('view engine', 'ejs');
 
 
 app.get('/', index);

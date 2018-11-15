@@ -1,0 +1,17 @@
+{
+  "name": "admissions",
+  "version": "1.0.0",
+  "description": "admissions system final project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "omegadeep10",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "sequelize": "^4.41.2",
+    "sqlite3": "^4.0.4"
+  }
+}

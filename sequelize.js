@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize');
-const StudentModel = require('./models/student')
+const StudentModel = require('./models/student');
+const RequestModel = require('./models/request');
+const ApplicationModel = require('./models/application');
 
 // initialize admissions database in a file called db.sqlite
 const db = new Sequelize('admissions', null, null, {
@@ -12,17 +14,35 @@ db.authenticate()
     .then(data => console.log('established db connection successfully'))
     .error(err => console.log('Unable to connect to DB: ', err));
 
-// init Student model
+// init models
 const Student = StudentModel(db, Sequelize);
+const Request = RequestModel(db, Sequelize);
+const Application = ApplicationModel(db, Sequelize);
+
+// setup Student - Request relationship
+Student.hasMany(Request, { foreignKey: 'studentId' });
+Request.belongsTo(Student, { foreignKey: 'studentId' });
 
 // synchronize
 db.sync({ force: true })
     .then(data => {
         // populate our DB with some example data here:
         //populate models with example data
-        Student.create({ name: 'John Doe' })
+        Student.create({ 
+            name: 'John Doe', 
+            phone: '111-222-3333',
+            email: 'jdoe@mailinator.com',
+            status: 'inquiring'
+        })
+            .then(student => {
+                student.createRequest({
+                    type: 'phone',
+                    message: "I'd like to talk about financial aid."
+                })
+            });
+
     })
     .error(err => console.log('DB sync failed: ', err));
 
 
-module.exports = { Student }
+module.exports = { Student, Request }

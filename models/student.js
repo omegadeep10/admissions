@@ -1,10 +1,16 @@
-module.exports = (sequelize, type) => {
-    return sequelize.define('student', {
-        id: {
-            type: type.INTEGER,
+module.exports = (db, sequelize) => {
+    return db.define('student', {
+        studentId: {
+            type: sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        name: type.STRING
+        name: sequelize.STRING,
+        phone: sequelize.STRING,
+        email: sequelize.STRING,
+        status: {
+            type: sequelize.ENUM('inquiring', 'applicant', 'accepted', 'rejected', 'cancelled'),
+            defaultValue: 'inquiring'
+        }
     })
 }

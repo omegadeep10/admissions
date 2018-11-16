@@ -5,8 +5,8 @@ module.exports = (db, sequelize) => {
             primaryKey: true,
             autoIncrement: true
         },
-        type: {
-            type: sequelize.ENUM('email', 'phone', 'tour'),
+        contact: {
+            type: sequelize.ENUM('email', 'phone'),
             defaultValue: 'email'
         },
         message: sequelize.STRING,

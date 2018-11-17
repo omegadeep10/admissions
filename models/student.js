@@ -7,7 +7,10 @@ module.exports = (db, sequelize) => {
         },
         name: sequelize.STRING,
         phone: sequelize.STRING,
-        email: sequelize.STRING,
+        email: {
+            type: sequelize.STRING,
+            unique: true
+        },
         status: {
             type: sequelize.ENUM('inquiring', 'applicant', 'accepted', 'rejected', 'cancelled'),
             defaultValue: 'inquiring'

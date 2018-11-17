@@ -9,7 +9,7 @@ const create_request = async (req, res) => {
         phone = req.body.phone,
         email = req.body.email;
 
-    let s = await Student.findOne({ where: { email: email, phone: phone } });
+    let s = await Student.findOne({ where: { email: email } });
 
     // if student exists, create a request
     if (s) {

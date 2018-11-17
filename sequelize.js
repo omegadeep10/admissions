@@ -24,6 +24,8 @@ const Admin = AdminModel(db, Sequelize);
 // setup Student - Request relationship
 Student.hasMany(Request, { foreignKey: 'studentId' });
 Request.belongsTo(Student, { foreignKey: 'studentId' });
+
+Student.hasMany(Application, { foreignKey: 'studentId' });
 Application.belongsTo(Student, { foreignKey: 'studentId' });
 
 // synchronize

@@ -8,6 +8,7 @@ const { Student, Request } = require('./sequelize');
 //const index = require('./controllers/index');
 const auth = require('./controllers/auth');
 const request = require('./controllers/request');
+const application = require('./controllers/application');
 
 // init app
 const app = express();
@@ -49,6 +50,9 @@ app.get('/logout', auth.logout);
 // request functionality
 app.get('/request', request.get_request);
 app.post('/request', request.create_request);
+
+app.get('/application', application.get_application);
+app.post('/application', application.create_application);
 
 // dashboard
 app.get('/dashboard', session_validator, (req, res) => res.send(req.session.user));

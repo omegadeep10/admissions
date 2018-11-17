@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admissions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet"> 
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="main">
+      <h1>Apply</h1>
+      <p class="subtext">
+        Fill out the application below for consideration.
+      </p>
+
+      <form action="application" method="post">
+        <div>
+        <% if (locals.message && message !== '') {%> 
+          <p class="<%= locals.type %>"><%= locals.message %></p> 
+        <% } %>
+       </div>
+        
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" name="name" id="" required placeholder="Griffin McElroy">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" name="email" id="" required placeholder="gmcelroy@gmail.com">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" name="phone" id="" required placeholder="123-321-1214">
+        </div>
+
+        <div class="form-group">
+            <label for="sat">SAT Combined Score</label>
+            <input type="text" name="sat" id="sat">
+        </div>
+
+        <div class="form-group">
+            <label for="major">Intended Major</label>
+            <input type="text" name="major" id="major">
+        </div>
+
+        <div class="form-group full-width">
+          <input type="checkbox" name="alumni_child" id="alumni_child">
+          <label for="alumni_child" style="display: inline;">My Parent is an Alumni</label>
+        </div>
+
+        <div class="form-group">
+            <label for="parent_year">Parent Year of Graduation</label>
+            <input type="text" name="parent_year" id="parent_year">
+        </div>
+
+        <div class="form-group">
+            <label for="parent_phone">Parent Phone</label>
+            <input type="tel" name="parent_phone" id="parent_phone">
+        </div>
+
+        <div class="form-group">
+            <label for="essay">Your Essay</label>
+            <textarea name="essay" id="essay" cols="30" rows="5"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="references">Your References</label>
+            <textarea name="references" id="references" cols="30" rows="5"></textarea>
+        </div>
+        <button type="submit">Submit Request</button>
+      </form>
+    </div>
+  </body>
+</html>

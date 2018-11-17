@@ -15,6 +15,9 @@ module.exports = (db, sequelize) => {
         },
         alumni_parent_graduation_year: sequelize.STRING,
         alumni_parent_phone: sequelize.STRING,
-        alumni_parent_email: sequelize.STRING
+        status: {
+            type: sequelize.ENUM(['pending', 'accepted', 'rejected']),
+            defaultValue: 'pending'
+        }
     })
 }

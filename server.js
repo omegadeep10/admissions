@@ -54,6 +54,9 @@ app.post('/request', request.create_request);
 app.get('/application', application.get_application);
 app.post('/application', application.create_application);
 
+app.get('/status', application.get_status);
+app.post('/status', application.check_status);
+
 // dashboard
 app.get('/dashboard', session_validator, (req, res) => res.send(req.session.user));
 app.use((req, res) => res.status(404).render('404'));

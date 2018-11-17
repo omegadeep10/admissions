@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admissions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet"> 
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="main">
+      <h1>Check Application Status</h1>
+      <p class="subtext">
+        Enter the email associated with your application to check your application status.
+      </p>
+
+      <form action="status" method="post">
+        <div>
+        <% if (locals.message && message !== '') {%> 
+          <p class="<%= locals.type %>"><%= locals.message %></p> 
+        <% } %>
+       </div>
+
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" name="email" id="" required placeholder="gmcelroy@gmail.com">
+        </div>
+
+        <div><button type="submit">Check Application</button></div>
+      </form>
+
+      <% if (locals.application) { %>
+        <div class="app-status">
+            <p class="name">Application for <%= locals.application.name %></p>
+            <h2 class="status"><%= locals.application.status %></h2>
+        </div>
+      <% } %>
+    </div>
+  </body>
+</html>

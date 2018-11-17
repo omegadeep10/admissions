@@ -58,6 +58,7 @@ form {
   margin-top: 10px;
   margin-bottom: 100px;
   max-width: 480px;
+  display: inline-block;
 }
 form .form-group {
   display: inline-block;
@@ -132,6 +133,23 @@ form button:hover {
   max-width: 1000px;
   margin: 0 auto;
   padding-top: 100px;
+}
+.main .app-status {
+  display: inline-block;
+  max-width: 400px;
+  vertical-align: top;
+  margin-top: 30px;
+  margin-left: 60px;
+}
+.main .app-status .name {
+  font-size: 20px;
+  color: #777;
+}
+.main .app-status .status {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #333;
 }
 
 .sidebar {

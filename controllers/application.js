@@ -1,5 +1,17 @@
 const { Student, Application } = require('../sequelize');
 
+
+const get_status = (req, res) => res.render('status');
+
+const check_status = async (req, res) => {
+    let email = req.body.email;
+
+    let s = await Student.findOne({ where: { email: email }, include: [{ model: Application, as: 'applications'}] });
+    if (!s || s.applications.length == 0) return res.render('status', { message: 'Unknown email, or no application filed.', type: 'error' });
+
+    return res.render('status', { application: { name: s.name, status: s.applications[0].status } });
+}
+
 const get_application = (req, res) => res.render('application');
 
 const create_application = async (req, res) => {
@@ -49,4 +61,4 @@ const create_application = async (req, res) => {
     
 }
 
-module.exports = { get_application, create_application }
+module.exports = { get_application, create_application, get_status, check_status }

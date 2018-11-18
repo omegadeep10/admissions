@@ -129,6 +129,23 @@ form button:hover {
   cursor: pointer;
 }
 
+.logout {
+  position: absolute;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #633394;
+  top: 50px;
+  border-radius: 3px;
+  right: 200px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.logout:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
 section {
   height: 99vh;
   position: relative;
@@ -307,11 +324,15 @@ section .request button:disabled:hover {
   color: #633394;
 }
 
+.home {
+  margin-top: 30px;
+}
+
 h1 {
   font-weight: 700;
   font-size: 36px;
   color: #633394;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .subtext {

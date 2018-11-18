@@ -9,29 +9,43 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <div class="main">
-      <h1>Admin login</h1>
-      <p class="subtext">
-        This login page allows admissions officers to access the dashboard.
-      </p>
+    <section>
+      <div class="section-container">
+        <h2>Information Requests</h2>
+        <p class="desc">These are information requests made by students, oldest first.</p>
+        <div class="requests-container">
+          
+          <% locals.requests.forEach(function(req) { %>
+          <div id="request-<%= req.requestId %>" class="request <%= req.closed ? 'closed' : 'open' %>">
+            <h3><%= req.student.name %></h3>
+            <div class="contact">
+              <a href="mailto:<%= req.student.email %>" class="email <%= req.contact == 'email' ? 'bold' : '' %>"><%= req.student.email %></a>
+              <p class="phone <%= req.contact == 'phone' ? 'bold' : '' %>"><%= req.student.phone %></p>
+            </div>
+            <textarea name="message" id="" cols="30" rows="3"><%= new Date(req.createdAt).toISOString().substr(0, 10) %> - <%= req.message %></textarea>
+            <button onclick="completeRequest(<%= req.requestId %>)" <%= req.closed ? 'disabled' : '' %> ><%= req.closed ? 'Completed' : 'Mark Complete' %></button>
+          </div>
+          <% }) %>
 
-      <form action="login" method="post">
-        <% if (locals.message && message !== '') {%> 
-          <p class="error"><%= locals.message %></p> 
-        <% } %>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-container">
+
         
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="" required placeholder="john.doe23@mga.edu">
-        </div>
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" name="password" id="" required>
-        </div>
+      </div>
+    </section>
 
-        <button type="submit">Login</button>
-      </form>
-    </div>
   </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    function completeRequest(id) {
+      $('#request-' + id).addClass('closed');
+      $.post('/request/complete', { requestId: id });
+    }
+  </script>
 </html>

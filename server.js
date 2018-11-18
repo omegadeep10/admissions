@@ -9,6 +9,7 @@ const { Student, Request } = require('./sequelize');
 const auth = require('./controllers/auth');
 const request = require('./controllers/request');
 const application = require('./controllers/application');
+const dashboard = require('./controllers/dashboard');
 
 // init app
 const app = express();
@@ -50,6 +51,7 @@ app.get('/logout', auth.logout);
 // request functionality
 app.get('/request', request.get_request);
 app.post('/request', request.create_request);
+app.post('/request/complete', request.update_request);
 
 app.get('/application', application.get_application);
 app.post('/application', application.create_application);
@@ -58,7 +60,7 @@ app.get('/status', application.get_status);
 app.post('/status', application.check_status);
 
 // dashboard
-app.get('/dashboard', session_validator, (req, res) => res.send(req.session.user));
+app.get('/dashboard', session_validator, dashboard.get_dashboard);
 app.use((req, res) => res.status(404).render('404'));
 
 app.listen(3000, () => console.log('Running on 3000'));

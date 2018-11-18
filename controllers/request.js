@@ -2,6 +2,13 @@ const { Student, Request } = require('../sequelize');
 
 const get_request = (req, res) => res.render('request');
 
+const update_request = async (req, res) => {
+    let requestId = req.body.requestId;
+    let r = await Request.findOne({ where: { requestId: requestId } });
+    r.closed = true;
+    r.save();
+}
+
 const create_request = async (req, res) => {
     let contact = req.body.contact,
         message = req.body.message,
@@ -27,4 +34,4 @@ const create_request = async (req, res) => {
     
 }
 
-module.exports = { get_request, create_request }
+module.exports = { get_request, create_request, update_request }

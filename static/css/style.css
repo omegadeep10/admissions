@@ -129,6 +129,83 @@ form button:hover {
   cursor: pointer;
 }
 
+section {
+  height: 99vh;
+  position: relative;
+}
+section .section-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+section .desc {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #555;
+}
+section .requests-container {
+  margin-top: 50px;
+  width: 860px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+section .request {
+  display: inline-block;
+  width: 230px;
+  padding: 15px;
+  margin-right: 15px;
+  margin-top: 20px;
+  border: 1px solid #555;
+  border-radius: 5px;
+}
+section .request.closed {
+  opacity: 0.5;
+}
+section .request h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+section .request .email, section .request .phone {
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 7px;
+  color: #888;
+}
+section .request .bold {
+  font-weight: 700;
+  text-decoration: underline;
+}
+section .request textarea {
+  border: none;
+  font-family: "Roboto";
+  width: 100%;
+  margin-top: 15px;
+}
+section .request button {
+  border: none;
+  background-color: #633394;
+  color: white;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-top: 15px;
+  transition: all 0.2s ease;
+}
+section .request button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+section .request button:disabled:hover {
+  cursor: default;
+  transform: none;
+}
+
 .main {
   max-width: 1000px;
   margin: 0 auto;

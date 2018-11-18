@@ -11,6 +11,7 @@
   <body>
     <section>
       <div class="section-container">
+        
         <h2>Information Requests</h2>
         <p class="desc">These are information requests made by students, oldest first.</p>
         <div class="requests-container">
@@ -33,11 +34,35 @@
     </section>
 
     <section>
-      <div class="section-container">
-
-        
-
-      </div>
+        <div class="section-container">
+          
+          <h2>Applications</h2>
+          <p class="desc">These are the currently pending student applications.</p>
+          <div class="applications-container">
+            
+            <% locals.applications.forEach(function(app) { %>
+            <div id="app-<%= app.applicationId %>" class="request <%= app.status !== 'pending' ? 'closed' : 'open' %>">
+              <h3><%= app.student.name %></h3>
+              <div class="contact">
+                <p>Email: <%= app.student.email %></p>
+                <p>Phone: <%= app.student.phone %></p>
+                <p>SAT: <%= app.sat_combined_score %></p>
+                <p>Major: <%= app.intended_major %></p>
+                <p>Alumni Parent: <%= app.is_child_of_alumni %></p>
+                <p>Parent Graduation Year: <%= app.alumni_parent_graduation_year %></p>
+                <p>Parent Phone: <%= app.alumni_parent_phone %></p>
+                <p>Application Status: <%= app.status %></p>
+              </div>
+              <textarea name="essay" id="" cols="30" rows="3"><%= new Date(app.createdAt).toISOString().substr(0, 10) %> - <%= app.essay %></textarea>
+              <textarea name="references" id="" cols="30" rows="3"><%= app.references %></textarea>
+              <button onclick="approveApp(<%= app.applicationId %>)" <%= app.status !== 'pending' ? 'disabled' : '' %> >Approve</button>
+              <button onclick="rejectApp(<%= app.applicationId %>)" <%= app.status !== 'pending' ? 'disabled' : '' %> >Reject</button>
+            </div>
+            <% }) %>
+  
+  
+          </div>
+        </div>
     </section>
 
   </body>
@@ -46,6 +71,16 @@
     function completeRequest(id) {
       $('#request-' + id).addClass('closed');
       $.post('/request/complete', { requestId: id });
+    }
+
+    function approveApp(id) {
+      $('#app-' + id).addClass('closed');
+      $.post('/application/approve', { applicationId: id });
+    }
+
+    function rejectApp(id) {
+      $('#app-' + id).addClass('closed');
+      $.post('/application/reject', { applicationId: id });
     }
   </script>
 </html>

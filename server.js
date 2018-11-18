@@ -55,6 +55,8 @@ app.post('/request/complete', request.update_request);
 
 app.get('/application', application.get_application);
 app.post('/application', application.create_application);
+app.post('/application/approve', application.approve_application);
+app.post('/application/reject', application.reject_application);
 
 app.get('/status', application.get_status);
 app.post('/status', application.check_status);

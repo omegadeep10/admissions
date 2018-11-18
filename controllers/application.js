@@ -12,6 +12,19 @@ const check_status = async (req, res) => {
     return res.render('status', { application: { name: s.name, status: s.applications[0].status } });
 }
 
+const approve_application = async (req, res) => {
+    console.log(req.body);
+    let app = await Application.findOne({ where: { applicationId: req.body.applicationId } });
+    app.status = 'accepted';
+    app.save();
+}
+
+const reject_application = async (req, res) => {
+    let app = await Application.findOne({ where: {applicationId: req.body.applicationId} });
+    app.status = 'rejected';
+    app.save();
+}
+
 const get_application = (req, res) => res.render('application');
 
 const create_application = async (req, res) => {
@@ -61,4 +74,4 @@ const create_application = async (req, res) => {
     
 }
 
-module.exports = { get_application, create_application, get_status, check_status }
+module.exports = { get_application, create_application, get_status, check_status, approve_application, reject_application }

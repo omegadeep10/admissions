@@ -44,6 +44,16 @@ db.sync({ force: true })
                     contact: 'phone',
                     message: "I'd like to talk about financial aid."
                 })
+
+                student.createApplication({
+                    references: 'none',
+                    sat_combined_score: '1300',
+                    intended_major: 'Accounting',
+                    essay: 'I wish to join the college',
+                    is_child_of_alumni: true,
+                    alumni_parent_graduation_year: '2002',
+                    alumni_parent_phone: ''
+                })
             });
         
         Admin.create({
